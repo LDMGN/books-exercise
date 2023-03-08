@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "publicationDate": "2008-08-01"
+    },
+    {
+      "title": "How To",
+      "author": "Randall Munroe",
+      "publicationDate": "2019-09-05"
+    },
+    {
+      "title": "What If",
+      "author": "Randall Munroe",
+      "publicationDate": "2015-09-24"
+    },
+    {
+      "title": "Essential Cell Biology",
+      "author": "Bruce Alberts",
+      "publicationDate": "2018-11-19"
+    }
+  ]
+}
