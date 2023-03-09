@@ -1,0 +1,56 @@
+<form *ngIf="newBookInputForm"
+      [formGroup]="newBookInputForm"
+      (ngSubmit)="addBook()">
+  <ng-container *ngIf="!(savingBook$ | async)">
+    <mat-stepper [linear]="false" orientation="vertical">
+      <mat-step #step1>
+        <ng-template matStepLabel>
+          Book info
+          <span class="error"
+                *ngIf="step1.interacted && (bookTitleInput.invalid || bookPublicationDateInput.invalid)">*</span>
+        </ng-template>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Book title</mat-label>
+            <input matInput
+                   [formControl]="bookTitleInput">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Publication date</mat-label>
+            <input matInput
+                   [matDatepicker]="picker"
+                   [formControl]="bookPublicationDateInput">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>YYYY-MM-DD</mat-hint>
+          </mat-form-field>
+        </div>
+      </mat-step>
+      <mat-step #step2>
+        <ng-template matStepLabel>
+          Author info
+          <span class="error" *ngIf="step2.interacted && authorNameInput.invalid">*</span>
+        </ng-template>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Author name</mat-label>
+            <input matInput
+                   [formControl]="authorNameInput">
+          </mat-form-field>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </ng-container>
+  <ng-container *ngIf="savingBook$ | async">
+    <mat-spinner diameter="30" mode="indeterminate"></mat-spinner>
+  </ng-container>
+  <div>
+    <button mat-flat-button
+            color="primary"
+            [disabled]="newBookInputForm.invalid || (savingBook$ | async)">
+      Save book
+    </button>
+  </div>
+</form>

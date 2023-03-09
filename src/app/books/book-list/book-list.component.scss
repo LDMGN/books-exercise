@@ -1,0 +1,15 @@
+.books {
+  margin: 10px;
+
+  .book {
+    margin-bottom: 10px;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .author {
+      font-style: italic;
+    }
+  }
+}

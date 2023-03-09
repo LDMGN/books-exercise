@@ -1,6 +1,23 @@
-<div class="books">
-  <div *ngFor="let book of books$ | async"
-       class="book">
-    {{book.title}}
+<div *ngIf="isLoading(bookLoadingStatus$ | async)"
+     class="loader">
+  <mat-spinner diameter="40" mode="indeterminate"></mat-spinner>
+</div>
+<div *ngIf="loadingFailed(bookLoadingStatus$ | async)">
+  Something went wrong trying to get your list of books.
+  <button (click)="loadBooks()">Try again</button>
+</div>
+<div *ngIf="isLoaded(bookLoadingStatus$ | async)">
+  <div class="books" *ngIf="(books$ | async) as books">
+    <div *ngFor="let book of books"
+         class="book">
+      <div class="title">{{book.title}}</div>
+      <div class="year">
+        <span class="year">{{book.publicationDate}}</span>
+      </div>
+      <div class="author">
+        by
+        <span class="name">{{book.author}}</span>
+      </div>
+    </div>
   </div>
 </div>
