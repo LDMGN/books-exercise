@@ -52,10 +52,10 @@ Run tests with Jest: `npm run jest`
 
 Run tests with Karma: `npm run test`
 
-## Modules
+## Modules & routing
 
-App module & app component are setup with a router-outlet to be able to route to various modules (only BooksModule in
-this case)
+App module & app component are set up with a router-outlet to be able to route (lazily-loaded) to various modules (only
+BooksModule in this case).
 
 ```
     RouterModule.forRoot([
@@ -112,8 +112,10 @@ and [book-publication-date.ts](./src/app/books/models/book-publication-date.ts)
 
 ## Angular Reactive Forms
 
-Forms are used for initial input validation and user feedback
-in [AddBookComponent](./src/app/books/add-book/add-book.component.ts).
+Forms are used for initial user input validation and user feedback
+in [AddBookComponent](./src/app/books/add-book/add-book.component.ts). Feedback is both in color and (simple)
+text/iconography (an asterisk). Textual feedback should be added for any server-side or application errors. The
+TypeGuards should prevent data corruption, but error handling and user feedback could be improved with time.
 
 ## Rxjs
 
